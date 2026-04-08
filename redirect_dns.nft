@@ -1,0 +1,8 @@
+table inet redirect_dns {
+    chain prerouting {
+        type nat hook prerouting priority -100;
+
+        iifname "br-lan" udp dport 53 redirect to :53
+        iifname "br-lan" tcp dport 53 redirect to :53
+    }
+}
