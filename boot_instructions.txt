@@ -1,0 +1,26 @@
+
+Denna fil behövs vid boot för router för att hämta blocklist, copy paste i router:
+----------------------------------------------------
+cat > /etc/rc.local << 'EOF'
+#!/bin/sh
+# Put your custom commands here that should be executed once
+# the system init finished. By default this file does nothing.
+
+# Vänta lite så nätverket och internet hunnit komma upp
+sleep 30
+
+# Hämta skriptet, gör det körbart och kör update
+uclient-fetch -q -O /tmp/blocklists.sh https://raw.githubusercontent.com/zoneme99/Home_Automation/main/blocklists.sh
+chmod +x /tmp/blocklists.sh
+/tmp/blocklists.sh update
+
+exit 0
+EOF
+-----------------------------------------------------
+sedan:
+----------
+chmod +x /etc/rc.local
+----------
+Den körs vid start av router, och blocklists.sh ligger i /tmp/blocklists.sh
+
+
