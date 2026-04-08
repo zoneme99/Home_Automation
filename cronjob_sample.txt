@@ -1,0 +1,11 @@
+# Uppdatera listor söndag 04:00
+0 4 * * 0 /tmp/blocklists.sh update
+
+# 18:00 — Släpp social+streaming
+0 18 * * * /tmp/blocklists.sh off
+
+# 20:00 — Blockera igen
+0 20 * * * /tmp/blocklists.sh on
+
+# Vid omstart — hämta skript och kör update
+@reboot sleep 30 && uclient-fetch -q -O /tmp/blocklists.sh https://raw.githubusercontent.com/zoneme99/Home_Automation/main/blocklists.sh && chmod +x /tmp/blocklists.sh && /tmp/blocklists.sh update
