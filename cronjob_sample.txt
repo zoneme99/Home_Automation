@@ -6,6 +6,3 @@
 
 # 20:00 — Blockera igen
 0 20 * * * /tmp/blocklists.sh on
-
-# Vid omstart — hämta skript och kör update
-@reboot sleep 30 && uclient-fetch -q -O /tmp/blocklists.sh https://raw.githubusercontent.com/zoneme99/Home_Automation/main/blocklists.sh && chmod +x /tmp/blocklists.sh && /tmp/blocklists.sh update
